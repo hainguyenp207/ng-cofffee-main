@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
       data => {
-        this.router.navigateByUrl("/");
+       window.location.href = "/"
       },
       error => {
         let detail = error.json();

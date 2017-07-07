@@ -46,24 +46,28 @@ export class PostComponent implements OnInit {
     };
     fb.init(initParams);
     this.toastyConfig.theme = 'material';
-    try {
-      let data = JSON.parse(localStorage.getItem("data"));
-      this.idUser = data.username;
-      this.token = localStorage.getItem("token");
+
       this.router.events.subscribe((val) => {
         // see also 
         if (val instanceof NavigationEnd) {
           this.sub = this.route.params.subscribe(params => {
             this.id = params['id'];
             this.fetchActivity(this.id);
-            if (this.idUser)
+            try {
+      let data = JSON.parse(localStorage.getItem("data"));
+      this.idUser = data.username;
+      this.token = localStorage.getItem("token");
+    if (this.idUser)
               this.checkUserRegisteredActivity(this.id, this.idUser);
-          });
-        }
-      });
     } catch (e) {
 
     }
+            
+          });
+        }
+      });
+
+    
 
   }
 

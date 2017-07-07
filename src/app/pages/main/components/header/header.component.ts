@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((val) => {
       try {
         let data = JSON.parse(localStorage.getItem("data"));
+        if(data)
         this.userName = data.name;
       } catch (e) {
         console.log(e);
@@ -38,7 +39,6 @@ export class HeaderComponent implements OnInit {
       this.userName = data.name;
     } catch (e) {
     }
-
   }
   fetchOrg() {
     this.orgService.getAll().subscribe(

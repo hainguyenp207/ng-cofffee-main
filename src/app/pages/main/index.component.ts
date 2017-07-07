@@ -100,7 +100,11 @@ export class IndexComponent implements OnInit {
     }
     this.router.events
       .subscribe((event) => {
+          try{
 
+          }catch(e){
+            
+          }
       });
   }
   fetchOrg() {
